@@ -1,17 +1,19 @@
 package in.chris;
 
+import java.util.List;
+
 public class Frame {
 
-    private final int[] rolls;
+    private final List<Integer> rolls;
     private final int nextFrameRollNum;
     private final int firstTry;
     private int secondTry;
 
-    public Frame(int[] rolls, int currentRollNumber) {
+    public Frame(List<Integer> rolls, int currentRollNumber) {
         this.rolls = rolls;
-        firstTry = rolls[currentRollNumber];
+        firstTry = rolls.get(currentRollNumber);
         if (!isStrike()) {
-            secondTry = rolls[currentRollNumber+1];
+            secondTry = rolls.get(currentRollNumber+1);
             nextFrameRollNum = currentRollNumber+2;
         } else {
             nextFrameRollNum = currentRollNumber+1;
@@ -32,11 +34,6 @@ public class Frame {
         return nextFrameRollNum;
     }
 
-    public int[] validateFrame(String[] tries) {
-
-        return null;
-    }
-
     private boolean isStrike() {
         return firstTry == 10;
     }
@@ -46,11 +43,11 @@ public class Frame {
     }
 
     private int strikeBonus() {
-        return rolls[nextFrameRollNum] + rolls[nextFrameRollNum +1];
+        return rolls.get(nextFrameRollNum) + rolls.get(nextFrameRollNum +1);
     }
 
     private int spareBonus() {
-        return rolls[nextFrameRollNum];
+        return rolls.get(nextFrameRollNum);
     }
 
     private int sumOfTries() {
