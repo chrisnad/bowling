@@ -58,26 +58,45 @@ public class BowlingGame {
     private int[] frameArr(String frameStr, int frameNum) {
         String[] frameStrArr = frameStr.replace("-", "0").split("");
         if (frameNum == 10) {
-
+            if ("X".equals(frameStrArr[0])) {
+                int[] frameIntArr = new int[3];
+                frameIntArr[0] = 10;
+                frameIntArr[1] = Integer.parseInt(frameStrArr[1].replace("-", "0").replace("X","10"));
+                frameIntArr[2] = Integer.parseInt(frameStrArr[2].replace("-", "0").replace("X","10"));
+                return frameIntArr;
+            } else {
+                int[] frameIntArr;
+                if ("/".equals(frameStrArr[1])) {
+                    frameIntArr = new int[3];
+                    frameIntArr[0] = Integer.parseInt(frameStrArr[0]);
+                    frameIntArr[1] = 10 - frameIntArr[0];
+                    frameIntArr[2] = Integer.parseInt(frameStrArr[2].replace("-", "0").replace("X","10"));
+                } else {
+                    frameIntArr = new int[2];
+                    frameIntArr[0] = Integer.parseInt(frameStrArr[0]);
+                    frameIntArr[1] = Integer.parseInt(frameStrArr[0]);
+                }
+                return frameIntArr;
+            }
         }
         int length = frameStrArr.length;
         if (length > 2) {
             throw new IllegalArgumentException("Bad input: frame number " + frameNum + " has an incorrect number of tries");
         }
+        int[] frameIntArr;
         if ("X".equals(frameStrArr[0])) {
-            int[] frameIntArr = new int[1];
+            frameIntArr = new int[1];
             frameIntArr[0] = 10;
-            return frameIntArr;
         } else {
-            int[] frameIntArr = new int[2];
+            frameIntArr = new int[2];
             frameIntArr[0] = Integer.parseInt(frameStrArr[0]);
             if ("/".equals(frameStrArr[1])) {
                 frameIntArr[1] = 10 - frameIntArr[0];
             } else {
                 frameIntArr[1] = Integer.parseInt(frameStrArr[0]);
             }
-            return frameIntArr;
         }
+        return frameIntArr;
     }
 
 }
