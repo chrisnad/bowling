@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Total points: " + game.totalPoints());
         if (args[1] != null) {
             int frameNum = Integer.parseInt(args[1]);
-            System.out.println("Frame " + frameNum + " points: " + game.getFrame(frameNum).points());
+            System.out.println("Frame number " + frameNum + " points: " + game.getFrame(frameNum).points());
         }
     }
 }

@@ -2,6 +2,9 @@ package in.chris;
 
 import java.util.List;
 
+/**
+ * The type Frame.
+ */
 public class Frame {
 
     private final List<Integer> rolls;
@@ -9,6 +12,12 @@ public class Frame {
     private final int firstTry;
     private int secondTry;
 
+    /**
+     * Instantiates a new Frame.
+     *
+     * @param rolls             the rolls
+     * @param currentRollNumber the current roll number
+     */
     public Frame(List<Integer> rolls, int currentRollNumber) {
         this.rolls = rolls;
         firstTry = rolls.get(currentRollNumber);
@@ -20,6 +29,11 @@ public class Frame {
         }
     }
 
+    /**
+     * Points int.
+     *
+     * @return the int
+     */
     public int points() {
         if (isStrike()) {
             return sumOfTries() + strikeBonus();
@@ -30,6 +44,11 @@ public class Frame {
         return sumOfTries();
     }
 
+    /**
+     * Gets next frame roll num.
+     *
+     * @return the next frame roll num
+     */
     public int getNextFrameRollNum() {
         return nextFrameRollNum;
     }
