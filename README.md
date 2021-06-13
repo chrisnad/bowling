@@ -1,7 +1,9 @@
 # bowling
 
-download jar and run the following :
+download jar here :
+https://github.com/cleitus/bowling/releases/download/0.0.1-RELEASE/bowling.jar
 
+run the following :
 ```shell
 java -jar bowling.jar "x x x x x x x x x xxx"
 ```
